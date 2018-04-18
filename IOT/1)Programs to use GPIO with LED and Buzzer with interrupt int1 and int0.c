@@ -24,9 +24,11 @@ void EINT0Callback(void)
 int main (void)
 {
 	UNLOCKREG();
-	DrvSYS_SetOscCtrl(E_SYS_XTL12M, 1); // external 12MHz Crystal
+	/*DrvSYS_SetOscCtrl(E_SYS_XTL12M, 1); // external 12MHz Crystal
 	//DrvSYS_Delay(5000);                 // delay for stable clock
 	DrvSYS_SelectHCLKSource(0);         // clock source = 12MHz Crystal
+	*/
+	DrvSYS_Open(48000000);
 	LOCKREG();
 
 	DrvGPIO_Open(E_GPB, 11, E_IO_OUTPUT); // initial GPIO pin GPB11 for controlling Buzzer

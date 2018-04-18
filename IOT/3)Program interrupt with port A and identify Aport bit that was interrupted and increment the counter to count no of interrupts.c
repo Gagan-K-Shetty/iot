@@ -25,6 +25,7 @@ void GPIOAB_INT_CallBack(uint32_t GPA_IntStatus, uint32_t GPB_IntStatus)
 
 int32_t main()
 {
+    int32_t a;
     char TEXT[16];
 
     UNLOCKREG();
@@ -50,7 +51,7 @@ int32_t main()
     
     while(1)
     {
-          int32_t a;
+          
           char text[16];
           DrvGPIO_SetPortBits(E_GPA,0);
           a=DrvGPIO_GetPortBits(E_GPA);

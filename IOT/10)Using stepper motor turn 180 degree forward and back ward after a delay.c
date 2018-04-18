@@ -14,10 +14,11 @@
 #include "Driver\DrvSYS.h"
 
 // Definitions for Step Motor turning degree
-#define d360 512
+/*#define d360 512
 #define d180 512/2
 #define d90  512/4
 #define d45  512/8
+*/
 #define d2 51
 
 unsigned char CW[8] ={0x09,0x01,0x03,0x02,0x06,0x04,0x0c,0x08}; //Clockwise Sequence
@@ -53,7 +54,7 @@ for(j=0;j<(deg);j++)
 
 int main (void)
 {      
-    CW_MOTOR(d2); // Clockwise         for 360 degree
-    //CCW_MOTOR(d2/2);// Counter-Clockwise for 180 degree
+    CW_MOTOR(d2/2); // Clockwise         for 180 degree
+    CCW_MOTOR(d2/4);// Counter-Clockwise for 90 degree
 }
 

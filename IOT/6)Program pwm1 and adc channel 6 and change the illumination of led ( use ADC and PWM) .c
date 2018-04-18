@@ -95,11 +95,11 @@ int32_t main (void)
     {
         while(ADC->ADSR.ADF==0);
         ADC->ADSR.ADF=1;
-        PWMA->CMR1=ADC->ADDR[7].RSLT<<4;                  // changed from PWMA->CMR1=ADC->ADDR[6].RSLT<<4;
+        PWMA->CMR1=ADC->ADDR[6].RSLT<<4;                  // changed from PWMA->CMR1=ADC->ADDR[7].RSLT<<4;
         //Show_Word(0,11,' ');
        // Show_Word(0,12,' ');
         //Show_Word(0,13,' ');
-        sprintf(adc_value+10,"%d",ADC->ADDR[7].RSLT);     // changed from sprintf(adc_value+10,"%d",ADC->ADDR[6].RSLT);
+        sprintf(adc_value+10,"%d",ADC->ADDR[6].RSLT);     // changed from sprintf(adc_value+10,"%d",ADC->ADDR[7].RSLT);
         print_lcd(0, adc_value);
         Delay(20000);
         ADC->ADCR.ADST=1;

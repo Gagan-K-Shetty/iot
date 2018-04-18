@@ -6,7 +6,7 @@
 void InitADC(void)
 {
     /* Step 1. GPIO initial */ 
-    GPIOA->OFFD|=0x00400000;     //Disable digital input path
+    GPIOA->OFFD|=0x00400000;     // 4-> 8 for internal
     SYS->GPAMFP.ADC7_SS21_AD6=1;         //Set ADC function 
                 
     /* Step 2. Enable and Select ADC clock source, and then enable ADC module */          
@@ -20,7 +20,7 @@ void InitADC(void)
     ADC->ADCR.ADMD   = 0;         //single mode
         
     /* Step 4. Select ADC channel */
-    ADC->ADCHER.CHEN = 0x40;
+    ADC->ADCHER.CHEN = 0x40;    // 4 -> 8 for internal
     
     /* Step 5. Enable ADC interrupt */
     ADC->ADSR.ADF =1;             //clear the A/D interrupt flags for safe 
@@ -88,7 +88,7 @@ int32_t main (void)
     {
         while(ADC->ADSR.ADF==0);
         ADC->ADSR.ADF=1;
-        PWMA->CMR0=ADC->ADDR[6].RSLT<<4;
+        PWMA->CMR0=ADC->ADDR[6].RSLT<<4;     //6 for potentiometer, 7 for internal , 0 for GPA 0
         //Show_Word(0,11,' ');
         //Show_Word(0,12,' ');
         //Show_Word(0,13,' ');

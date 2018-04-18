@@ -27,7 +27,7 @@ int32_t main()
 {
     int32_t a;
     char TEXT[16];
-
+     char text[16];
     UNLOCKREG();
     /*SYSCLK->PWRCON.XTL12M_EN=1;           //commented
     DrvSYS_Delay(5000);                    // Waiting for 12M Xtal stalble
@@ -52,7 +52,7 @@ int32_t main()
     while(1)
     {
           
-          char text[16];
+         
           DrvGPIO_SetPortBits(E_GPA,0);
           a=DrvGPIO_GetPortBits(E_GPA);
          

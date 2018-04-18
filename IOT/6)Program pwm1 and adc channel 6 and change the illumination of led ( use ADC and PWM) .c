@@ -34,7 +34,7 @@ void InitADC(void)
 void InitPWM1(void)
 {
      /* Step 1. GPIO initial */ 
-    SYS->GPAMFP.PWM1_AD12=1;//SYS->GPAMFP.PWM0_AD13=1;
+    SYS->GPAMFP.PWM1_AD14=1//SYS->GPAMFP.PWM1_AD12=1;//SYS->GPAMFP.PWM0_AD13=1;
                 
     /* Step 2. Enable and Select PWM clock source*/        
     SYSCLK->APBCLK.PWM01_EN = 1;//Enable PWM clock

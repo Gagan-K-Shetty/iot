@@ -10,14 +10,15 @@ volatile uint32_t irqA_counter = 0;
 
 void GPIOAB_INT_CallBack(uint32_t GPA_IntStatus, uint32_t GPB_IntStatus)
 {
-     int32_t a;
+     /*int32_t a;
      char text[16];
      DrvGPIO_SetPortBits(E_GPA,0);
      a=DrvGPIO_GetPortBits(E_GPA);
      if ((GPA_IntStatus>>15) & 0x01) irqA_counter++;
      sprintf(text,"port number %d",a);
      print_lcd(3,"GPA interrupt !! ");
-     print_lcd(2,text);
+     print_lcd(2,text);*/
+     irqA_counter++;
 }
 
 
@@ -27,9 +28,10 @@ int32_t main()
     char TEXT[16];
 
     UNLOCKREG();
-    SYSCLK->PWRCON.XTL12M_EN=1;
+    /*SYSCLK->PWRCON.XTL12M_EN=1;           //commented
     DrvSYS_Delay(5000);                    // Waiting for 12M Xtal stalble
-    SYSCLK->CLKSEL0.HCLK_S=0;
+    SYSCLK->CLKSEL0.HCLK_S=0;*/
+    DrvSYS_Open(48000000);
     LOCKREG();
 
   // setup GPA15 & GPD15 to get interrupt input
@@ -48,8 +50,16 @@ int32_t main()
     
     while(1)
     {
-        sprintf(TEXT,"IRQ_A: %d",irqA_counter);
-        print_lcd(1, TEXT);
+          int32_t a;
+          char text[16];
+          DrvGPIO_SetPortBits(E_GPA,0);
+          a=DrvGPIO_GetPortBits(E_GPA);
+         
+          sprintf(text,"port number %d",a);
+          print_lcd(3,"GPA interrupt !! ");
+          print_lcd(2,text);
+          sprintf(TEXT,"IRQ_A: %d",irqA_counter);
+          print_lcd(1, TEXT);
         
     }
 }

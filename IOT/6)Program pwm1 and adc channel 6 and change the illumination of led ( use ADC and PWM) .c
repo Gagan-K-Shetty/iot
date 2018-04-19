@@ -38,10 +38,10 @@ void InitPWM1(void)
                 
     /* Step 2. Enable and Select PWM clock source*/        
     SYSCLK->APBCLK.PWM01_EN = 1;//Enable PWM clock
-    SYSCLK->CLKSEL1.PWM01_S = 3;//Select 22.1184Mhz for PWM clock source
+    SYSCLK->CLKSEL1.PWM01_S = 0;//3;//Select 22.1184Mhz for PWM clock source
 
-    PWMA->PPR.CP01=1;            //Prescaler 0~255, Setting 0 to stop output clock
-    PWMA->CSR.CSR1=0;     //PWMA->CSR.CSR0=0;            // PWM clock = clock source/(Prescaler + 1)/divider
+    PWMA->PPR.CP01=11;//1;            //Prescaler 0~255, Setting 0 to stop output clock
+    PWMA->CSR.CSR1=3;//0;     //PWMA->CSR.CSR0=0;            // PWM clock = clock source/(Prescaler + 1)/divider
                          
     /* Step 3. Select PWM Operation mode */
     //PWM0

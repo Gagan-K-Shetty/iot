@@ -33,3 +33,4 @@ int32_t main (void)
     }
 }
 
+// connect signal to gpa 6 , vcc to vcc , gnd to gnd

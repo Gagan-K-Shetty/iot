@@ -56,7 +56,7 @@ int32_t main()
           DrvGPIO_SetPortBits(E_GPA,0);
           a=DrvGPIO_GetPortBits(E_GPA);
          
-          sprintf(text,"port number %d",a);
+          sprintf(text,"%d",a);
           print_lcd(3,"GPA interrupt !! ");
           print_lcd(2,text);
           sprintf(TEXT,"IRQ_A: %d",irqA_counter);
@@ -64,4 +64,4 @@ int32_t main()
         
     }
 }
-
+//connect gpa15 to ground and then to vcc. Repeat every time

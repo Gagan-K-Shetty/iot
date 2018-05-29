@@ -53,4 +53,3 @@ LOCKREG();
 }
 
 // interrupt button -> buzzer
-// GPB-14 to Vcc glow
